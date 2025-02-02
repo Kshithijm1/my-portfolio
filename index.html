@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Technology Portfolio</title>
+  <link rel="stylesheet" href="styles.css"> <!-- Link to CSS file -->
+
+  <!-- Include Three.js core library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <!-- Include dependencies for Water.js in the correct order -->
+  <script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r128/examples/js/objects/Reflector.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r128/examples/js/objects/Refractor.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r128/examples/js/objects/Water.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+  <script async src="https://unpkg.com/es-module-shims@1.6.3/dist/es-module-shims.js"></script>
+  <script type="importmap">
+        {
+            "imports": {
+                "three":  "https://unpkg.com/three@0.128.0/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three@0.128.0/examples/js/"
+            }
+        }
+    </script>
+  <script src="script.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+</head>
+
+<body>
+
+  <!-- Loading Screen -->
+  <div id="loading-screen">
+    <video id="logo-video" muted>
+      <source src="assets/images/logo.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
+  <!-- Your Website Content -->
+  <div id="main-content">
+    <!-- Horizontal Navbar -->
+    <nav>
+      <ul>
+        <li id="nav-logo" style="margin-right: 750px;"><a onclick="scrollToSectionbuttons('home', event)"></a>
+          <img id="logo-image" src="assets/images/logo.png" alt="Logo" style="opacity: 0; background-color: transparent;">
+          </a>
+        </li>
+        <li>
+          <a href="resume.html" target="_blank" style="background-color: transparent; text-decoration: none;"
+            class="nav-btn">
+            <svg width="180px" height="60px" viewBox="0 0 180 60" class="border">
+              <rect x="1" y="1" width="178" height="58" rx="15" ry="15" class="bg-line" />
+              <rect x="1" y="1" width="178" height="58" rx="15" ry="15" class="hl-line" />
+            </svg>
+            <span style="background-color: transparent;">RESUME</span>
+          </a>
+        </li>
+        <li>
+          <a onclick="scrollToSectionbuttons('projects', event)"
+            style="background-color: transparent; text-decoration: none;" class="nav-btn">
+            <svg width="180px" height="60px" viewBox="0 0 180 60" class="border">
+              <rect x="1" y="1" width="178" height="58" rx="15" ry="15" class="bg-line" />
+              <rect x="1" y="1" width="178" height="58" rx="15" ry="15" class="hl-line" />
+            </svg>
+            <span style="background-color: transparent;">PROJECTS</span>
+          </a>
+        </li>
+        <li>
+          <a onclick="scrollToSectionbuttons('contact', event)"
+            style="background-color: transparent; text-decoration: none;" class="nav-btn">
+            <svg width="180px" height="60px" viewBox="0 0 180 60" class="border">
+              <rect x="1" y="1" width="178" height="58" rx="15" ry="15" class="bg-line"
+                style="transform-origin: top right;" />
+              <rect x="1" y="1" width="178" height="58" rx="15" ry="15" class="hl-line"
+                style="transform-origin: top right;" />
+            </svg>
+            <span style="background-color: transparent;">CONTACT</span>
+          </a>
+        </li>
+
+      </ul>
+    </nav>
+
+    <!-- Content Sections -->
+    <section id="home" style="height: 100vh; position: relative;">
+      <h1>Home</h1>
+      <p>Content for the Home section goes here...</p>
+      <!-- Container for the 3D object -->
+      <div id="threejs-container" style="width: 100%; height: 100%;">
+        <div id="portfolio-title">Kshithij</div>
+        <div id="portfolio-title2">Malebennur</div>
+      </div>
+
+    </section>
+
+
+    <section id="about" style="max-height: 100vh; position: relative; background-color: transparent;">
+      <h1 id="intro-text-heading"
+        style="opacity: 0; font-size: 6rem; color: white; text-align: center; margin-top: 10%; background-color: transparent;">
+        Kshithij Malebennur</h1>
+      <h1 id="about-me-heading" class="fade-heading" style="background-color: transparent;">About Me</h1>
+    </section>
+
+
+    <section id="projects"
+      style="height: 100vh; padding-top: 60px; display: flex; flex-direction: column; align-items: center;">
+      <h1 class="project-text" style="font-size: 4rem; margin-bottom: 20px;">Projects</h1>
+      <div class="project-container" style="display: flex; flex-wrap: wrap; justify-content: center;">
+        <div id="Project" class="project" data-text="A.L.F.R.E.D AI Assistant"
+          style="background-image: url(assets/images/artificalintell.webp);"></div>
+        <div id="Project" class="project" data-text="E.D.I.T.H AR Glasses"
+          style="background-image: url(assets/images/ar_glasses.webp);"></div>
+        <div id="Project" class="project" data-text="Self-Driving Car" style="background-image: url(assets/images/selfdriving.webp);">
+        </div>
+        <div id="Project" class="project" data-text="Stock Predictor"
+          style="background-image: url(assets/images/stockpredictor.webp);"
+          onclick="window.location.href='https://github.com/Kshithijm1/Advanced-AI-Stock-Predictor';">
+        </div>
+        <div id="Project" class="project" data-text="Coming Soon!" style="background-image: url(assets/images/comingsoon.webp);">
+        </div>
+        <div id="Project" class="project" data-text="Coming Soon!" style="background-image: url(assets/images/comingsoon.webp);">
+        </div>
+        <div id="Project" class="project" data-text="Coming Soon!" style="background-image: url(assets/images/comingsoon.webp);">
+        </div>
+      </div>
+      <div id="project-hover-text" style="margin-top: 20px; font-size: 2rem; color: white; text-align: center;"></div>
+    </section>
+
+
+    <section id="contact" style="height: 30vh; padding-top: 60px; position: relative;">
+      <div class="social-icons-wrapper">
+        <!-- LinkedIn -->
+        <a href="https://linkedin.com/in/kshithijmalebennur" target="_blank" class="social-icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+            <rect x="2" y="9" width="4" height="12"></rect>
+            <circle cx="4" cy="4" r="2"></circle>
+          </svg>
+        </a>
+
+        <!-- Instagram -->
+        <a href="https://instagram.com/kshithij.malebennur" target="_blank" class="social-icon">
+          <svg viewBox="0 0 24 24">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+          </svg>
+        </a>
+
+        <!-- Email -->
+        <a href="mailto:kmaleben@uoguelph.ca" class="social-icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+            <polyline points="22,6 12,13 2,6"></polyline>
+          </svg>
+        </a>
+
+        <!-- GitHub -->
+        <a href="https://github.com/Kshithijm1" target="_blank" class="social-icon">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+            </path>
+          </svg>
+        </a>
+      </div>
+    </section>
+  </div>
+</body>
+
+</html>
